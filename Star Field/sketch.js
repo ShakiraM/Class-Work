@@ -16,6 +16,21 @@ function setup() {
 	y = height/2;
 }
 
+function movestars(i) {
+  if (mouseX < width/2) {
+    stars1[i] = stars1[i] - (mouseX*0.01);
+  }
+  if (mouseX > width/2) {
+    stars1[i] = stars1[i] - (mouseX*0.01);
+  }
+  if (mouseX < height/2) {
+    stars1[i] = stars1[i] - (mouseX*0.01);
+  }
+  if (mouseX > height/2) {
+    stars2[i] = stars2[i] - (mouseX*0.01);
+  }
+}
+
 function draw() {
   console.log("X: " + mouseX, "Y:" + mouseY);
   var a = random(windowWidth);
@@ -29,20 +44,11 @@ function draw() {
   ellipse(a,b,5,5);
   
   fill(255);
-    for (var i = 0; i < 500; i++) {
+  
+  for (var i = 0; i < 500; i++) {
+    
     ellipse(stars1[i],stars2[i],5,5);
-    if (mouseX < width/2) {
-      stars1[i] = stars1[i] - (mouseX*0.01);
-    }
-    if (mouseX > width/2) {
-      stars1[i] = stars1[i] - (mouseX*0.01);
-    }
-    if (mouseX < height/2) {
-      stars1[i] = stars1[i] - (mouseX*0.01);
-    }
-    if (mouseX > height/2) {
-      stars2[i] = stars2[i] - (mouseX*0.01);
-    }
+    movestars(i);
   } 
 
 }
